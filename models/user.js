@@ -11,13 +11,13 @@ const userSchema = new mongoose.Schema(
     email: {
       type: String,
       required: true,
+      unique: true,
     },
     salt: {
       type: String,
     },
     hashed_password: {
       type: String,
-      required: true,
     },
     followers: {
       type: [String],
@@ -36,7 +36,7 @@ userSchema
   .set(function (pass) {
     this._pass = pass;
     this.salt = uuid.v4();
-    this.hashed_password = this.securePass(pass);
+    this.hashed_password = this.encryptPassword(pass);
   })
   .get(function () {
     return this._pass;
