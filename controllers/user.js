@@ -18,8 +18,11 @@ exports.signup = async (req, res) => {
 };
 
 exports.authenticate = async (req, res) => {
-    const { email, password } = req.body;
     try {
+        const { email, password } = req.body;
+        if (!email || !password) {
+            throw new Error("Email and password are required");
+        }
         // Search for a user with this email else throw an error
         const user = await User.findOne({ email });
         if (!user) {

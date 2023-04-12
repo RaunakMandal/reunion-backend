@@ -11,7 +11,25 @@ app.use(express.json());
 app.use("/api", require("./routes/api"));
 
 app.use("*", (req, res) => {
-  return res.redirect("/api");
+  return res.status(404).json({
+    message: "Endpoint Not Found. Please try the correct endpoint",
+    success: false,
+
+    endpoints: [
+
+      'POST /authenticate',
+      'GET /user',
+      'POST /follow/:id',
+      'POST /unfollow/:id',
+      'POST /posts',
+      'DELETE /posts/:id',
+      'POST /like/:id',
+      'POST /unlike/:id',
+      'POST /comment/:id',
+      'GET /posts/:id',
+      'GET /all_posts',
+    ]
+  });
 });
 
 app.listen(port, () => {

@@ -16,7 +16,18 @@ const postsSchema = new mongoose.Schema(
       required: true,
     },
     comments: {
-      type: [String],
+      type: [
+        {
+          owner:
+          {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+          },
+          comment: {
+            type: String,
+          },
+        },
+      ],
       default: [],
     },
     likes: {
