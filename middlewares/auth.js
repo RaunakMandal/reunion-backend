@@ -15,13 +15,3 @@ exports.isAuthenticated = (req, res, next) => {
 
     auth(req, res, next);
 };
-
-// exports.isAllowedToAccess = (req, res, next) => {
-//     if (req.auth._id !== req.params.id)
-//         return res.status(401).json({
-//             message: "You are not allowed to access this resource",
-//             success: false,
-//         });
-
-//     next();
-// }

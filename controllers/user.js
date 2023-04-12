@@ -101,6 +101,10 @@ exports.follow = async (req, res) => {
             throw new Error("User you are trying to follow is not found");
         }
 
+        if (currentUser._id.toString() === userToFollow._id.toString()) {
+            throw new Error("You cannot follow yourself");
+        }
+
         // Check if the current user is already following the user to follow
         const isFollowing = currentUser.following.find(
             (user) => user.toString() === userToFollow._id.toString()
