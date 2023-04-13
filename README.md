@@ -29,8 +29,3 @@ JWT_SECRET=<your_jwt_secret>
 ```
 
 Once you are ready, and ofcourse have Docker installed, go to the Root directory and run `docker-compose up` and the app should be accessible at `http://localhost:8000`
-
-## Testing the App
-```bash
-npm run test
-```
